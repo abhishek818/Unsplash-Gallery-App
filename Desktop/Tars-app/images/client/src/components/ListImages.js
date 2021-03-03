@@ -78,12 +78,13 @@ const setImage = (image) =>
        
       { loading ? <h3>Loading...</h3> : images.map(image =>
         ( <>
-          <div className="img-col">          
+          <div className="img-col"
+               onClick={() => setImage(image)}>          
             
             <img src={image.urls.thumb} 
               alt={image.alt_description}
               key={image.id}
-              onClick={() => setImage(image)}>
+              className="img-results">
             </img>
 
             <div className="img-content">
