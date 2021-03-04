@@ -1,53 +1,6 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { Popup } from './Popup';
+import React, { Fragment } from "react";
 
-const API_URL = "https://api.unsplash.com";
-const imagePerPage = 20;
-var currentImage;
-
-const ListImages = () => {
-  // const [homepage, setHomepage] = useState(false);
-  const [images, setImages] = useState([]);
-  const [query, setQuery] = useState("Homepage results from Unsplash List Photos API");
-  const [loading, setLoading] = useState(true);
-  const [showPopup, setShowPopup] = useState(false);
-  
-
-  useEffect(() => {
- 
-  const getImages = async () => {
-    try {
-
-      const response = query==='Homepage results from Unsplash List Photos API' ? 
-      await fetch(`${API_URL}/photos?client_id=${process.env.REACT_APP_CLIENT_ID}`
-      +`&per_page=${imagePerPage}`) : await fetch(`${API_URL}/search/photos?client_id=${process.env.REACT_APP_CLIENT_ID}`
-      +`&query=${query}&per_page=${imagePerPage}`);
-      
-      const data = await response.json();
-
-      if(query==='Homepage results from Unsplash List Photos API')
-      setImages(data);      
-
-      else
-      setImages(data.results);      
-      setLoading(false);
-            
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
-
-    getImages();
-  });
-
-
-const setImage = (image) => 
-{
-  setShowPopup(true);
-  currentImage = image;
-}
-
-
+const ListImages = ({ query, setQuery, loading, setImage, currentImages }) => {
   return (
     <Fragment>
 
@@ -76,7 +29,7 @@ const setImage = (image) =>
 
       <h4 className="header"> Search Results for "<span style={{ color:"red" }}>{query}</span>" </h4>
        
-      { loading ? <h3>Loading...</h3> : images.map(image =>
+      { loading ? <h3>Loading...</h3> : currentImages.map(image =>
         ( <>
           <div className="img-col"
                onClick={() => setImage(image)}>          
@@ -97,8 +50,7 @@ const setImage = (image) =>
         )
       )}
       
-    <Popup image={currentImage} trigger={showPopup} setTrigger={setShowPopup}/>
-
+    
     </Fragment>
   );
 };

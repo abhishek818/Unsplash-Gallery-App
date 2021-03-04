@@ -96,8 +96,8 @@ background: linear-gradient(to bottom, #1D2671, #C33764); /* W3C, IE 10+/ Edge, 
   border: 1px solid black;
   cursor: pointer;
   background-color: lightyellow;
-  /* max-height: 10%;
-  max-width: 10%; */
+  /* height: 10%;
+  width: 10%;  */
 }
 
 .img-col:hover
@@ -108,14 +108,24 @@ background: linear-gradient(to bottom, #1D2671, #C33764); /* W3C, IE 10+/ Edge, 
 
 .img-results
 {
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
 }
 
 .img-content
 {
   text-align: center;
   color: black;
+  max-width: 150px;
+  max-height: 48px;
+}
+
+.pagination
+{
+  position: fixed;
+  left: 4%;
+  top: 94%;
+  bottom: 10%;
 }
 
 .popup
@@ -142,7 +152,7 @@ background: linear-gradient(to bottom, #1D2671, #C33764); /* W3C, IE 10+/ Edge, 
   color: black;
 }
 
-.popup-inner .close-btn
+.popup-inner .btn-close
 {
   position: absolute;
   top:16px;
@@ -160,7 +170,7 @@ background: linear-gradient(to bottom, #1D2671, #C33764); /* W3C, IE 10+/ Edge, 
 
 .popup-inner-image img
 {
-  height: 400px;
-  width: 400px;
+  height: 440px;
+  width: 430px;
   /* cursor: default; */
 }

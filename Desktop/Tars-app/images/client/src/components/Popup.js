@@ -1,33 +1,45 @@
 import React from 'react';
 
-export const Popup = (props) =>
+const Popup = (props) =>
 {
     return (props.trigger) ? (
     <div className="popup">
         <div className="popup-inner">
             
-            <button className="close-btn" onClick={() => props.setTrigger(false)}>
-                close
+            <button className="btn-close btn-close-black" onClick={() => props.setTrigger(false)}>
             </button>
             
             <div className="popup-inner-image">
                 <img src= {props.image.urls.full} 
                 alt={props.image.alt_description}
                 key={props.image.id} />
-               
-                {props.image.user.name} 
+    
+                <span><br></br></span>
+    
+                <span>Desc : {props.image.alt_description ?
+                props.image.alt_description : "Not Provided"}
+                </span>
+    
+                <span>UserName : {props.image.user.name}</span>
+    
                 <span>Likes : {props.image.likes} </span>
+    
                 <span>Twitter Username : {props.image.user.twitter_username ? 
                     props.image.user.twitter_username : "Not Provided" }
                 </span> 
+    
                 <span>Portfolio Url : {props.image.user.portfolio_url ?
                     props.image.user.portfolio_url : "Not Provided" } 
                 </span> 
+    
             </div>
         </div>
     </div>
  ) : "";
 };
+
+export default Popup;
+
 
 
 // <img src= {props.image} 
