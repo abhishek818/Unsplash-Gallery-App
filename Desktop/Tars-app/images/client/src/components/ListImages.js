@@ -5,7 +5,7 @@ const ListImages = ({ query, setQuery, loading, setImage, currentImages }) => {
     <Fragment>
 
       <span>
-      <select className="select mt-5"
+      <select className="select mt-4"
        value={query} onChange = {(e) =>
       {
         setQuery(e.target.value);
